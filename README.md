@@ -1,5 +1,9 @@
 # atom-sync package
 
-Package to synchronize your Atom Packages. The packages are stored in a JSON file which is in turn stored on `myjson.com`.
+Plugin to synchronize your Atom Packages. JSON objects are stored at `myjson.com`
 
-![A screenshot of your package](https://cdn2.iconfinder.com/data/icons/files-coding/24/files-coding-sync-_-_-512.png)
+### TODO
+- Better detection for sync advice.
+- Ability to select packages to sync.
+- Remove packages from list that aren't compatible on all machines.
+- Windows compatibility.
