@@ -1,0 +1,80 @@
+<div class="block no-padding">
+    <h3>Atom Package Sync</h3>
+</div>
+
+<div class='block'>
+
+    <p><span class='fa fa-at'></span> myjson.com <code>id</code></p>
+
+    <!-- id -->
+    <input @mouseover="showHelp('id')" class="form-control" type="text" v-model="id" :disabled="editLocked"/>
+
+    <!-- edit / set id -->
+    <!-- clear, copy, paste controls -->
+    <div class="inline-block">
+        <button @mouseover="showHelp('unlock')" @click="toggleEdit" class='btn'>
+            <span v-if="editLocked" class="fa fa-lock"> Edit</span>
+            <span v-else class="fa fa-unlock"> Set</span>
+        </button>
+        <div class="btn-group">
+            <button @mouseover="showHelp('revert')" @click="resetId" :disabled="editLocked" class='btn'>
+                <span class='fa fa-repeat'></span>
+                Reset
+            </button>
+            <button @mouseover="showHelp('copy')" @click="copyId" :disabled="editLocked" class='btn'>
+                <span class='fa fa-copy'></span>
+                Copy
+            </button>
+            <button @mouseover="showHelp('paste')" @click="pasteId" :disabled="editLocked" class='btn'>
+                <span class="fa fa-paste"></span>
+                Paste
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="block">
+
+    <p>
+        <i class="fa fa-server"></i> <strong>Master: </strong> <code @mouseover="showHelp('master')">{{ master }}</code>
+        <span v-if="isMaster" @mouseover="showHelp('isMaster')" class="icon icon-primitive-dot status-added"></span>
+        <span v-else @mouseover="showHelp('isSlave')" class="icon icon-primitive-dot status-removed"></span>
+    </p>
+
+    <!-- set master / slave -->
+    <div class="inline-block btn-group">
+        <button @mouseover="showHelp('master')" @click="setMakeMaster" :disabled="isMaster" class='btn'>
+            <span v-if="makeMaster" class="icon icon-primitive-dot status-added"></span>
+            Master
+        </button>
+        <button @mouseover="showHelp('slave')" @click="setMakeSlave" :disabled="isMaster" class='btn'>
+            <span v-if="!makeMaster" class="icon icon-primitive-dot status-added"></span>
+            Slave
+        </button>
+        <!-- merge TODO future addition  -->
+    </div>
+
+    <!-- sync / close -->
+    <div class="inline-block btn-group">
+        <button @mouseover="showHelp('sync')" @click="syncJson" class='btn'>
+            <span class="fa fa-cloud-upload"> Sync</span>
+        </button>
+        <button @mouseover="showHelp('close')" @click="closeUI" class='btn'>
+            <span class='fa fa-close'></span>
+            Close
+        </button>
+    </div>
+
+</div>
+
+<!--  help dialog -->
+<div class="block help-dialog">
+    <p><span class='fa fa-info-circle'></span> {{{ helpMessage }}}</p>
+</div>
+
+<div v-if="disableUi" class="preloader">
+    <div class="bg"></div>
+    <div class="animation">
+        <span class='loading loading-spinner-tiny inline-block'></span>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+  "name": "atom-sync-packages",
+  "main": "./lib/atom-package-sync",
+  "version": "0.0.0",
+  "description": "Sync your atom packages & themes",
+  "keywords": [],
+  "activationCommands": {
+    "atom-workspace": "atom-sync:sync"
+  },
+  "id": "https://github.com/atom/atom-package-sync",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "font-awesome": "^4.5.0",
+    "loophole": "^1.1.0",
+    "q": "^1.4.1",
+    "request": "^2.67.0",
+    "vue": "^1.0.12"
+  }
+}
